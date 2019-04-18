@@ -19,12 +19,6 @@ export default {
         Header,
         Todo,
         Footer
-    },
-
-    data () {
-        return {
-
-        }
     }
 }
 </script>
