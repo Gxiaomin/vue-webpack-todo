@@ -31,7 +31,7 @@ export default {
     top 0
     bottom 0
 }
-
+// 遮罩层
 #cover {
     position absolute
     top 0
