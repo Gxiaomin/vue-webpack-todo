@@ -21,6 +21,8 @@
             @toggle="toggleFilter"
             @clearAllCompleted="clearAllCompleted"
         ></tabs>
+        
+        <router-view/>
     </section>
 </template>
 
@@ -31,6 +33,27 @@ import Tabs from './tabs.vue';
 let id = 0;
 
 export default {
+    // 路由的钩子（在钩子中，没调用next()之前，该组件还没有被渲染，
+    // 是无法获取到上下文的(this)，此时不能改变或调用该组件内的属性或方法）
+    // 若要获取上下文，可以在next()中传入一个方法
+    beforeRouteEnter (to, from, next) {
+        console.log('todo before enter');
+        next(vm => { // vm：为上下文
+            console.log('todo before enter this.id:' + vm.id);
+        });
+    },
+    // 同一路由，不同参数时才会被处罚
+    beforeRouteUpdate (to, from, next) {
+        console.log('todo before update');
+        next();
+    },
+    beforeRouteLeave (to, from, next) {
+        console.log('todo before leave');
+        next();
+    },
+    // 通过路由配置的 props: true 传入的参数
+    props: ['id'],
+
     components: {
         Item,
         Tabs
@@ -42,6 +65,10 @@ export default {
 
             filter: 'all'
         }
+    },
+
+    mounted () {
+        // console.log(this.id);
     },
 
     methods: {

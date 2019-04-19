@@ -2,12 +2,14 @@
     <div id="app">
         <!-- 遮罩层 -->
         <div id="cover"></div>
-
         <Header></Header>
-
+        <router-link to="/todo/123">todo</router-link>
+        <router-link to="/login">login</router-link>
         <!-- todo主体 -->
-        <router-view></router-view>
-        
+        <transition name="fade">
+            <router-view/>
+        </transition>
+
         <Footer></Footer>
     </div>
 </template>

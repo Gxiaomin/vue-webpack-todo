@@ -9,6 +9,12 @@ Vue.use(VueRouter);
 
 const router = createRouter();
 
+// 导航守卫
+router.beforeEach((to, from, next) => {
+    console.log('router beforeEach');
+    next();
+});
+
 new Vue({
     router,
     render: (h) => h(App)
