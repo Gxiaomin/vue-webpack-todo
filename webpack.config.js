@@ -48,7 +48,9 @@ const config = {
             }
         }),
         
-        new HTMLPlugin()
+        new HTMLPlugin({
+            template: path.join(__dirname, 'index.html')
+        })
     ]
 };
 
@@ -85,7 +87,11 @@ if (isDev) {
         // 启动webpack-dev-server时，会自动打开浏览器
         // open: false,
         // 当某个组件改变时，不重新渲染整个页面，而是重新加载某部分
-        hot: true
+        hot: true,
+        // 在使用“history”模式下，映射路由处理，否则 404
+        historyApiFallback: {
+            index: '/index.html'
+        }
     };
 
     config.plugins.push(

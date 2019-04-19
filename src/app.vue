@@ -1,24 +1,24 @@
 <template>
-    <div calss="app">
+    <div id="app">
         <!-- 遮罩层 -->
         <div id="cover"></div>
 
         <Header></Header>
+
         <!-- todo主体 -->
-        <todo></todo>
+        <router-view></router-view>
+        
         <Footer></Footer>
     </div>
 </template>
 
 <script>
-import Header from './todo/header.vue';
-import Footer from './todo/footer.jsx';
-import Todo from './todo/todo.vue';
+import Header from './views/header.vue';
+import Footer from './views/footer.jsx';
 
 export default {
     components: {
         Header,
-        Todo,
         Footer
     }
 }
@@ -26,7 +26,7 @@ export default {
 
 <style lang="stylus" scoped>
 #app {
-    position relative
+    position absolute
     left 0
     right 0
     top 0
