@@ -39,5 +39,11 @@ export default [
         // component: Login
         // 异步加载组件
         component: () => import('../views/Login.vue')
+    },
+    // vuex 测试页面
+    {
+        path: '/vuex',
+        name: 'vuex',
+        component: () => import('../views/vuexTest.vue')
     }
 ];

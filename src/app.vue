@@ -3,8 +3,10 @@
         <!-- 遮罩层 -->
         <div id="cover"></div>
         <Header></Header>
+
         <router-link to="/todo/123">todo</router-link>
         <router-link to="/login">login</router-link>
+        <router-link to="/vuex">Vuex</router-link>
         <!-- todo主体 -->
         <transition name="fade">
             <router-view/>

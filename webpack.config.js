@@ -61,7 +61,8 @@ if (isDev) {
         {
             test: /\.styl/,
             use: [
-                'style-loader',
+                // 使用vue开发时，使用vue-style-loader,可以实现css的热更新
+                'vue-style-loader',
                 'css-loader',
                 {
                     loader: 'postcss-loader',
@@ -113,7 +114,7 @@ if (isDev) {
         {
             test: /\.styl/,
             use: ExtractTextWebpackPlugin.extract({
-                fallback: 'style-loader',
+                fallback: 'vue-style-loader',
                 use: [
                     'css-loader',
                     {
