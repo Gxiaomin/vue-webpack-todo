@@ -1,9 +1,9 @@
 export default {
-    count: 0,
+  count: 0,
 
-    syncCount: 2,
+  syncCount: 2,
 
-    firstName: 'xiaomin',
+  firstName: 'xiaomin',
 
-    lastName: 'huang'
-};
+  lastName: 'huang'
+}

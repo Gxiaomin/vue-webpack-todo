@@ -1,18 +1,18 @@
-import Vuex from 'vuex';
+import Vuex from 'vuex'
 
-import defaultState from './state/state';
-import mutations from './mutations/mutations';
-import getters from './getters/getters';
-import actions from './actions/actions';
+import defaultState from './state/state'
+import mutations from './mutations/mutations'
+import getters from './getters/getters'
+import actions from './actions/actions'
 
 export default () => {
-    const store = new Vuex.Store({
-        state: defaultState,
-        mutations,
-        getters,
-        actions,
-        // 分模块
-        /* modules: {
+  const store = new Vuex.Store({
+    state: defaultState,
+    mutations,
+    getters,
+    actions
+    // 分模块
+    /* modules: {
             a: {
                 // 避免不同模块命名冲突，调用时则使用 （a/updateText）的方式
                 namespaced: true,
@@ -50,8 +50,8 @@ export default () => {
                 }
             }
         } */
-        // store 插件
-        /* plugins: [
+    // store 插件
+    /* plugins: [
             (store) => {
                 // 监听：参数一: 为要监听的值，参数二为该值变化时的回调函数
                 store.watch(state => state.count, newCount => {
@@ -70,29 +70,29 @@ export default () => {
                 })
             }
         ] */
+  })
+
+  // vuex的热更新
+  if (module.hot) {
+    module.hot.accept([
+      './state/state',
+      './mutations/mutations',
+      './getters/getters',
+      './actions/actions'
+    ], () => {
+      const newState = require('./state/state').default
+      const newMutaions = require('./mutations/mutations').default
+      const newGetters = require('./getters/getters').default
+      const newActions = require('./actions/actions').default
+
+      store.hotUpdate({
+        state: newState,
+        mutations: newMutaions,
+        getters: newGetters,
+        actions: newActions
+      })
     })
+  }
 
-    // vuex的热更新
-    if (module.hot) {
-        module.hot.accept([
-            './state/state',
-            './mutations/mutations',
-            './getters/getters',
-            './actions/actions',
-        ], () => {
-            const newState = require('./state/state').default;
-            const newMutaions = require('./mutations/mutations').default;
-            const newGetters = require('./getters/getters').default;
-            const newActions = require('./actions/actions').default;
-
-            store.hotUpdate({
-                state: newState,
-                mutations: newMutaions,
-                getters: newGetters,
-                actions: newActions,
-            })
-        })
-    }
-
-    return store;
-};
+  return store
+}
